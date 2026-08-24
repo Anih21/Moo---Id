@@ -623,15 +623,14 @@ const uploadedFiles = { front: false, back: false, left: false, right: false };
 let cocoModel = null;
 
 async function loadAI() {
-
-    document.getElementById("analyse-btn").innerHTML =
-        "🧠 Loading AI...";
-
+  try {
+    document.getElementById("analyse-btn").innerHTML = "🧠 Loading AI...";
     cocoModel = await cocoSsd.load();
-
-    document.getElementById("analyse-btn").innerHTML =
-        "🔍 Validate Images";
-
+    document.getElementById("analyse-btn").innerHTML = "🔍 Validate Images";
+  } catch (err) {
+    console.error("Failed to load CoCo-SSD:", err);
+    document.getElementById("analyse-btn").innerHTML = "❌ AI Load Failed";
+  }
 }
 
 loadAI();
@@ -713,15 +712,15 @@ function handleUpload(input, cardId, prevId) {
 
             const animals = await detectAnimal(img);
 
-const detected = animals.find(a => a.score > 0.60);
+            const detected = animals.find(a => a.score > 0.60);
 
-if(!detected){
+            if(!detected){
 
-    alert("❌ Cow not detected confidently.");
+                alert("❌ Cow, bull, or buffalo not detected. Please upload a clear photo of the animal.");
 
-    return;
+                return;
 
-}
+            }
             const card = document.getElementById(cardId);
 
             const prev = document.getElementById(prevId);
@@ -732,7 +731,7 @@ if(!detected){
 
             const badge = document.createElement("div");
             badge.className = "ai-badge";
-            badge.innerHTML = "🤖 Cow Detected";
+            badge.innerHTML = "🤖 Cattle/Buffalo Detected";
             card.appendChild(badge);
 
             const key = cardId.replace("card-","");
@@ -766,15 +765,18 @@ if(!detected){
 }
 
 async function detectAnimal(image){
-
-    const predictions = await cocoModel.detect(image);
-
-    const animals = predictions.filter(p =>
-        p.class === "cow"
-    );
-
-    return animals;
-
+    if (!cocoModel) return [];
+    try {
+        const predictions = await cocoModel.detect(image);
+        const allowed = ['cow', 'sheep', 'horse', 'elephant'];
+        const animals = predictions.filter(p =>
+            allowed.includes(p.class)
+        );
+        return animals;
+    } catch (e) {
+        console.error("CoCo-SSD detection error:", e);
+        return [];
+    }
 }
 
 function updateAnalyseBtn() {
