@@ -1,0 +1,15 @@
+{
+  "name": "mooid-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "jimp": "^0.22.12",
+    "@tensorflow/tfjs": "^4.20.0",
+    "@tensorflow-models/mobilenet": "^2.1.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
