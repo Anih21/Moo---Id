@@ -4,32 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MooID – Cattle Breed Identifier</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-
 </head>
 <body>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="cloud cloud-1"></div>
-  <div class="cloud cloud-2"></div>
-  <div class="cloud cloud-3"></div>
   <nav>
-    <div class="logo"><span class="logo-icon">🐄</span> MooID</div>
-    <span class="nav-badge">🌟 20 Breeds</span>
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      MooID
+    </div>
+    <span class="nav-badge">Database: 20 Breeds</span>
   </nav>
   <div class="hero-body">
-    <h1 class="hero-title">Identify Any <span>Cattle Breed</span><br>In Seconds!</h1>
-    <p class="hero-sub">Upload 4 photos of a cow or bull from different angles — our AI will tell you exactly what breed it is and everything about it! 🐮</p>
-    <button class="hero-btn" onclick="document.getElementById('upload-section').scrollIntoView({behavior:'smooth'})">🔍 Start Identifying</button>
-    <div class="animal-row">
-      <span>🐄</span><span>🌿</span><span>🥛</span><span>🌾</span><span>🐄</span>
-    </div>
+    <h1 class="hero-title">Identify <span>Cattle Breeds</span> Instantly</h1>
+    <p class="hero-sub">Upload 4 photos of a cow, bull, or buffalo from different perspectives — our cloud intelligence will analyze and return its breed and details.</p>
+    <button class="hero-btn" onclick="document.getElementById('upload-section').scrollIntoView({behavior:'smooth'})">Get Started</button>
   </div>
-  <svg class="hills" viewBox="0 0 1440 110" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0,60 C200,0 400,110 600,50 C800,-10 1000,90 1200,40 C1300,15 1380,55 1440,30 L1440,110 L0,110 Z" fill="#FFF8F0"/>
-  </svg>
 </div>
 
 <!-- MAIN -->
@@ -43,216 +38,214 @@
     <div class="step-line" id="line1"></div>
     <div class="step-item">
       <div class="step-circle" id="s2">2</div>
-      <div class="step-label">Analysing</div>
+      <div class="step-label">Analysis</div>
     </div>
     <div class="step-line" id="line2"></div>
     <div class="step-item">
-      <div class="step-circle" id="s3">✓</div>
-      <div class="step-label">Results!</div>
+      <div class="step-circle" id="s3">3</div>
+      <div class="step-label">Results</div>
     </div>
   </div>
 
   <!-- UPLOAD -->
   <div id="upload-section">
-    <h2 class="section-title">📸 Upload 4 Photos</h2>
-    <p class="section-sub">Click each box to take or choose a photo — one from each angle shown below</p>
+    <h2 class="section-title">Upload Photos</h2>
+    <p class="section-sub">Please select one photo for each of the four perspectives listed below.</p>
 
-    <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
-      <button class="filter-btn active" id="fb-all" onclick="setFilter('all')">🌍 All Breeds (20)</button>
-      <button class="filter-btn" id="fb-indian" onclick="setFilter('indian')">🇮🇳 Indian Breeds Only (13)</button>
+    <div class="filter-btn-container">
+      <button class="filter-btn active" id="fb-all" onclick="setFilter('all')">All Breeds (20)</button>
+      <button class="filter-btn" id="fb-indian" onclick="setFilter('indian')">Indian Breeds (13)</button>
     </div>
 
     <!-- Breed List Panel -->
-    <div id="breed-panel" style="background:white;border-radius:20px;box-shadow:0 8px 32px rgba(90,42,14,0.13);padding:20px 24px;margin-bottom:24px;border:2px solid #E8D5C0;">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
-        <div id="panel-title" style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:#5C2A0E;">🌍 All 20 Breeds in Database</div>
-        <div id="panel-count" style="background:#F5C842;color:#5C2A0E;font-weight:800;font-size:0.82rem;padding:4px 12px;border-radius:20px;">20 breeds</div>
+    <div id="breed-panel" class="breed-panel">
+      <div class="panel-header">
+        <div id="panel-title">Supported Database Breeds</div>
+        <div id="panel-count" class="panel-count">20 breeds</div>
       </div>
-      <div id="breed-chips" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+      <div id="breed-chips" class="breed-chips"></div>
     </div>
 
     <div class="tip-box">
-      <div class="tip-icon">💡</div>
+      <svg class="tip-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
       <div class="tip-text">
-        <strong>Best results tip:</strong> Take photos in daylight with the full body of the animal visible. Make sure the camera is at the animal's level. Avoid blurry or dark images!
+        <strong>Best results tip:</strong> Capture full-body photos in bright daylight. Keep the camera level with the animal and ensure images are sharp and clear.
       </div>
     </div>
 
     <div class="upload-grid">
+      <!-- Front View Card -->
       <div class="upload-card" id="card-front" onclick="triggerUpload('input-front')">
+        <input
+            type="file"
+            id="input-front"
+            accept="image/*"
+            capture="environment"
+            onclick="this.value='';"
+            onchange="handleUpload(this,'card-front','prev-front')">
+        <img class="upload-preview" id="prev-front" src="" alt="Front view">
+        <div class="upload-check">✓</div>
+        <svg class="upload-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <div class="upload-label">Front View</div>
+        <div class="upload-hint">Face & head profile</div>
+      </div>
 
-    <input
-        type="file"
-        id="input-front"
-        accept="image/*"
-        capture="environment"
-        onclick="this.value='';"
-        onchange="handleUpload(this,'card-front','prev-front')">
-
-    <img class="upload-preview" id="prev-front" src="" alt="Front view">
-
-    <div class="upload-check">✓</div>
-
-    <div class="upload-icon">🐮</div>
-
-    <div class="upload-label">Front View</div>
-
-    <div class="upload-hint">Face & head facing camera</div>
-
-</div>
+      <!-- Back View Card -->
       <div class="upload-card" id="card-back" onclick="triggerUpload('input-back')">
+        <input
+            type="file"
+            id="input-back"
+            accept="image/*"
+            capture="environment"
+            onclick="this.value='';"
+            onchange="handleUpload(this,'card-back','prev-back')">
+        <img class="upload-preview" id="prev-back" src="" alt="Back view">
+        <div class="upload-check">✓</div>
+        <svg class="upload-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <div class="upload-label">Back View</div>
+        <div class="upload-hint">Rear & tail profile</div>
+      </div>
 
-    <input
-        type="file"
-        id="input-back"
-        accept="image/*"
-        capture="environment"
-        onclick="this.value='';"
-        onchange="handleUpload(this,'card-back','prev-back')">
-
-    <img class="upload-preview" id="prev-back" src="" alt="Back view">
-
-    <div class="upload-check">✓</div>
-
-    <div class="upload-icon">🐄</div>
-
-    <div class="upload-label">Back View</div>
-
-    <div class="upload-hint">Tail & rear visible</div>
-
-</div>
+      <!-- Left Profile Card -->
       <div class="upload-card" id="card-left" onclick="triggerUpload('input-left')">
+        <input
+            type="file"
+            id="input-left"
+            accept="image/*"
+            capture="environment"
+            onclick="this.value='';"
+            onchange="handleUpload(this,'card-left','prev-left')">
+        <img class="upload-preview" id="prev-left" src="" alt="Left view">
+        <div class="upload-check">✓</div>
+        <svg class="upload-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <div class="upload-label">Left Profile</div>
+        <div class="upload-hint">Full body left side</div>
+      </div>
 
-    <input
-        type="file"
-        id="input-left"
-        accept="image/*"
-        capture="environment"
-        onclick="this.value='';"
-        onchange="handleUpload(this,'card-left','prev-left')">
-
-    <img class="upload-preview" id="prev-left" src="" alt="Left view">
-
-    <div class="upload-check">✓</div>
-
-    <div class="upload-icon">🐃</div>
-
-    <div class="upload-label">Left Side</div>
-
-    <div class="upload-hint">Full body from left</div>
-
-</div>
+      <!-- Right Profile Card -->
       <div class="upload-card" id="card-right" onclick="triggerUpload('input-right')">
-
-    <input
-        type="file"
-        id="input-right"
-        accept="image/*"
-        capture="environment"
-        onclick="this.value='';"
-        onchange="handleUpload(this,'card-right','prev-right')">
-
-    <img class="upload-preview" id="prev-right" src="" alt="Right view">
-
-    <div class="upload-check">✓</div>
-
-    <div class="upload-icon">🐂</div>
-
-    <div class="upload-label">Right Side</div>
-
-    <div class="upload-hint">Full body from right</div>
-
-</div>
+        <input
+            type="file"
+            id="input-right"
+            accept="image/*"
+            capture="environment"
+            onclick="this.value='';"
+            onchange="handleUpload(this,'card-right','prev-right')">
+        <img class="upload-preview" id="prev-right" src="" alt="Right view">
+        <div class="upload-check">✓</div>
+        <svg class="upload-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <div class="upload-label">Right Profile</div>
+        <div class="upload-hint">Full body right side</div>
+      </div>
+    </div>
 
     <button class="analyse-btn" id="analyse-btn" onclick="startAnalysis()" disabled>
-      🔬 Identify This Breed!
+      Identify Breed
     </button>
   </div>
 
   <!-- LOADING -->
   <div id="loading-section">
-    <div class="loading-cow">🐄</div>
-    <div class="loading-text">Analysing your photos<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></div>
-    <p style="color:var(--text-muted);margin-top:10px;font-weight:600;">Our AI is checking markings, body shape, coat color & more!</p>
+    <div class="spinner"></div>
+    <div class="loading-text">Analyzing Photos</div>
+    <p class="loading-sub">AI is evaluating body shape, color markings, and characteristics...</p>
     <div class="loading-bar"><div class="loading-fill"></div></div>
   </div>
 
   <!-- RESULT -->
   <div id="result-section">
-    <div class="result-header">
-      <div class="result-breed-icon" id="res-icon">🐄</div>
-      <div class="result-breed-name" id="res-name">Loading...</div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:8px;">
-        <div class="result-confidence" id="res-confidence">Confidence: 96%</div>
-        <div id="res-indian-badge" style="display:none;background:#FF9933;color:#fff;font-weight:800;font-size:0.82rem;padding:5px 14px;border-radius:20px;border:2px solid #fff3;">🇮🇳 Indian Breed</div>
+    <div class="result-card">
+      <div class="result-header">
+        <div class="result-title-group">
+          <div class="result-breed-name" id="res-name">Breed Name</div>
+          <div class="result-meta">
+            <span class="result-confidence" id="res-confidence">Confidence</span>
+            <span class="result-badge indian" id="res-indian-badge" style="display:none;">Indian Breed</span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="info-grid" id="info-grid"></div>
+      <div class="info-grid" id="info-grid"></div>
 
-    <div class="description-card">
-      <h3>📖 About This Breed</h3>
-      <p id="res-description"></p>
-    </div>
+      <div class="description-card">
+        <h3>About This Breed</h3>
+        <p id="res-description"></p>
+      </div>
 
-    <div class="fun-fact-card">
-      <div class="fun-fact-icon">🌟</div>
-      <div>
-        <h3>Did You Know?</h3>
+      <div class="fun-fact-card">
+        <h4>Did You Know?</h4>
         <p id="res-funfact"></p>
       </div>
-    </div>
 
-    <div style="background:white;border-radius:20px;padding:24px;box-shadow:var(--card-shadow);margin-bottom:28px;">
-      <h3 style="font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--brown-dark);margin-bottom:16px;">📊 Breed Characteristics</h3>
-      <div id="stat-bars"></div>
-    </div>
+      <div class="stats-card">
+        <div class="stats-title">Breed Characteristics</div>
+        <div id="stat-bars"></div>
+      </div>
 
-    <button class="try-again-btn" onclick="resetApp()">🔄 Try Another Animal</button>
+      <button class="try-again-btn" onclick="resetApp()">Analyze Another Animal</button>
+    </div>
   </div>
 
   <!-- HOW IT WORKS -->
   <div class="how-section">
-    <h2 class="section-title">🤔 How Does It Work?</h2>
-    <p class="section-sub">Simple, fun and super fast! Here's what happens behind the scenes</p>
+    <h3 class="section-title" style="text-align: center;">How It Works</h3>
+    <p class="section-sub" style="text-align: center; margin-bottom: 2rem;">A standard step-by-step pipeline for breed identification.</p>
     <div class="how-grid">
       <div class="how-item">
         <div class="how-num">1</div>
-        <div class="how-icon">📷</div>
-        <div class="how-text">You take 4 photos from different angles</div>
+        <div class="how-title">Capture Photos</div>
+        <div class="how-desc">Upload 4 clear photos showing the animal from multiple perspectives.</div>
       </div>
       <div class="how-item">
         <div class="how-num">2</div>
-        <div class="how-icon">🧠</div>
-        <div class="how-text">Our AI reads coat color, spots, body shape & horns</div>
+        <div class="how-title">Local Validation</div>
+        <div class="how-desc">On-device vision model validates the photo quality and presence of the animal.</div>
       </div>
       <div class="how-item">
         <div class="how-num">3</div>
-        <div class="how-icon">📚</div>
-        <div class="how-text">It compares with 50+ breeds in our database</div>
+        <div class="how-title">Cloud AI Analysis</div>
+        <div class="how-desc">Gemini multimodal intelligence processes the images against biological and zoological taxonomy.</div>
       </div>
       <div class="how-item">
         <div class="how-num">4</div>
-        <div class="how-icon">🎉</div>
-        <div class="how-text">Get full info about the breed instantly!</div>
+        <div class="how-title">Detailed Report</div>
+        <div class="how-desc">Get instant confirmation of the breed alongside its dairy, origin, and physiological stats.</div>
       </div>
     </div>
   </div>
 </main>
 
 <footer>
-  Made with ❤️ for farmers & curious minds · <strong>MooID</strong> · Powered by AI · 🐄
+  MooID &middot; Professional Breed Identification System &middot; Powered by Gemini API
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
 <script>
 // ---- Breed Database ----
 const BREEDS = [
-  // ===== INDIAN BREEDS =====
   {
-    name: "Gir", icon: "🐄", confidence: "94%", isIndian: true,
+    name: "Gir", isIndian: true,
     origin: "Gir Forest, Gujarat, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "12–15 litres/day",
@@ -261,16 +254,16 @@ const BREEDS = [
     region: "Gujarat, Rajasthan, Maharashtra (India); Brazil",
     color: "Red with white patches",
     description: "The Gir is one of India's most prized indigenous breeds, originating from the Gir Forest of Gujarat. Known for its extraordinary heat tolerance and disease resistance, it thrives in harsh tropical conditions. Its milk is rich in A2 protein, making it highly sought after for dairy products like ghee and butter. The breed has been successfully exported to Brazil, where it forms the backbone of the country's dairy industry.",
-    funfact: "Gir cows are considered sacred in many Indian villages and can recognize their owners by voice! Brazil imported Gir cattle over 100 years ago, and today they outnumber the breed in India itself! 🇧🇷",
+    funfact: "Brazil imported Gir cattle over 100 years ago, and today they outnumber the breed in India itself!",
     stats: [
-      { name: "Milk Production", val: 75, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 95, color: "#E8843A" },
-      { name: "Disease Resistance", val: 88, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 82, color: "#F5C842" },
+      { name: "Milk Production", val: 75, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 95, color: "#b45309" },
+      { name: "Disease Resistance", val: 88, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 82, color: "#1e293b" },
     ]
   },
   {
-    name: "Sahiwal", icon: "🐂", confidence: "91%", isIndian: true,
+    name: "Sahiwal", isIndian: true,
     origin: "Punjab region (India & Pakistan)",
     type: "Dairy Breed",
     milk: "10–16 litres/day",
@@ -279,16 +272,16 @@ const BREEDS = [
     region: "Punjab (India & Pakistan), East Africa, Australia",
     color: "Reddish-brown, sometimes white patches",
     description: "Sahiwal is considered the best dairy breed in Asia for tropical climates. It is incredibly hardy, with a thick loose skin that helps regulate body temperature and repel ticks. Originally from the Montgomery district of Punjab, the Sahiwal has been exported globally and plays a critical role in upgrading local cattle breeds in Africa and Australia. Its milk fat content is significantly higher than European breeds.",
-    funfact: "Sahiwal cows are so resistant to ticks that researchers study them to develop natural tick-control strategies for other breeds! 🦟❌",
+    funfact: "Sahiwal cows are so resistant to ticks that researchers study them to develop natural tick-control strategies for other breeds!",
     stats: [
-      { name: "Milk Production", val: 70, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 92, color: "#E8843A" },
-      { name: "Disease Resistance", val: 90, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 88, color: "#F5C842" },
+      { name: "Milk Production", val: 70, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 92, color: "#b45309" },
+      { name: "Disease Resistance", val: 90, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 88, color: "#1e293b" },
     ]
   },
   {
-    name: "Murrah Buffalo", icon: "🐃", confidence: "89%", isIndian: true,
+    name: "Murrah Buffalo", isIndian: true,
     origin: "Haryana & Punjab, India",
     type: "Dairy Breed (Buffalo)",
     milk: "18–25 litres/day",
@@ -297,16 +290,16 @@ const BREEDS = [
     region: "Haryana, Punjab, Delhi (India); Pakistan, Italy",
     color: "Jet black with curled horns",
     description: "Though technically a buffalo, Murrah is the world's highest milk-producing buffalo breed and is often called the 'Black Gold' of the dairy world. Originating in Haryana, India, its milk has 7–8% fat — far richer than cow's milk — making it perfect for making paneer, ghee, and mozzarella cheese. Murrah buffalo were exported to Italy where their milk is used in authentic Buffalo Mozzarella!",
-    funfact: "Italian Buffalo Mozzarella (PDO) is made from Murrah-descended buffalo milk! So that pizza you love might have an Indian connection! 🍕🇮🇳",
+    funfact: "Italian Buffalo Mozzarella (PDO) is made from Murrah-descended buffalo milk! So that pizza you love might have an Indian connection!",
     stats: [
-      { name: "Milk Production", val: 85, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 75, color: "#E8843A" },
-      { name: "Disease Resistance", val: 80, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 70, color: "#F5C842" },
+      { name: "Milk Production", val: 85, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 75, color: "#b45309" },
+      { name: "Disease Resistance", val: 80, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 70, color: "#1e293b" },
     ]
   },
   {
-    name: "Tharparkar", icon: "🐄", confidence: "89%", isIndian: true,
+    name: "Tharparkar", isIndian: true,
     origin: "Thar Desert, Rajasthan, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "8–10 litres/day",
@@ -315,16 +308,16 @@ const BREEDS = [
     region: "Rajasthan, Gujarat (India); Sindh (Pakistan)",
     color: "White to grey-white",
     description: "The Tharparkar — also called the White Sindhi or Thari — is a magnificent desert breed from the Thar Desert, one of the harshest environments on Earth. Despite receiving less than 150mm of rainfall annually in its native habitat, the Tharparkar thrives on sparse desert vegetation and scrubland. It is revered for its drought resilience, ability to walk long distances in search of water, and surprisingly good milk production given such extreme conditions. The Indian government has declared it a priority conservation breed.",
-    funfact: "Tharparkar cows can survive on just thorny desert shrubs and cacti during droughts — while still producing milk for their calves! They are truly the 'camels of the cattle world'. 🌵🐄",
+    funfact: "Tharparkar cows can survive on just thorny desert shrubs and cacti during droughts — while still producing milk for their calves! They are truly the 'camels of the cattle world'.",
     stats: [
-      { name: "Milk Production", val: 52, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 98, color: "#E8843A" },
-      { name: "Disease Resistance", val: 88, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 87, color: "#F5C842" },
+      { name: "Milk Production", val: 52, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 98, color: "#b45309" },
+      { name: "Disease Resistance", val: 88, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 87, color: "#1e293b" },
     ]
   },
   {
-    name: "Kankrej", icon: "🐂", confidence: "90%", isIndian: true,
+    name: "Kankrej", isIndian: true,
     origin: "Rann of Kutch, Gujarat & Rajasthan, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "8–12 litres/day",
@@ -333,16 +326,16 @@ const BREEDS = [
     region: "Gujarat, Rajasthan (India); Brazil (as Guzerat)",
     color: "Silver-grey to iron-grey with black markings",
     description: "The Kankrej (also known as Wagad or Vaghiyar) is one of the heaviest Indian Zebu breeds and one of the fastest draft cattle in the world. Originating in the Rann of Kutch borderlands of Gujarat, it is famous for its striking silver-grey coat, lyre-shaped upward-sweeping horns, and powerful muscular build. In Brazil, it is known as the Guzerat breed and contributes enormously to the beef and dairy industries there. Kankrej bulls are legendary for their speed and endurance.",
-    funfact: "Kankrej bulls are so fast and powerful that they were historically used to pull heavy carts at racing speeds — earning the nickname 'The Greyhounds of Cattle'! 🏃💨",
+    funfact: "Kankrej bulls are so fast and powerful that they were historically used to pull heavy carts at racing speeds — earning the nickname 'The Greyhounds of Cattle'!",
     stats: [
-      { name: "Milk Production", val: 60, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 94, color: "#E8843A" },
-      { name: "Disease Resistance", val: 87, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 72, color: "#F5C842" },
+      { name: "Milk Production", val: 60, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 94, color: "#b45309" },
+      { name: "Disease Resistance", val: 87, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 72, color: "#1e293b" },
     ]
   },
   {
-    name: "Ongole", icon: "🐂", confidence: "93%", isIndian: true,
+    name: "Ongole", isIndian: true,
     origin: "Ongole region, Andhra Pradesh, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "6–10 litres/day",
@@ -351,16 +344,16 @@ const BREEDS = [
     region: "Andhra Pradesh, Telangana (India); Brazil (as Nelore), USA",
     color: "White to light grey, with black skin pigment",
     description: "The Ongole is a majestic, large-framed breed from coastal Andhra Pradesh, named after the town of Ongole. It is one of the most exported Indian breeds in history — known as Nelore in Brazil, it is the dominant beef breed across South America, numbering over 167 million animals. The Ongole is recognised by its impressive muscular build, long face, large dewlap, and a prominent hump. It is exceptionally disease-resistant and thrives in humid tropical conditions.",
-    funfact: "The Ongole breed, known as Nelore in Brazil, is the MOST NUMEROUS cattle breed in the world by population — with over 167 million animals in Brazil alone! 🇧🇷🌎",
+    funfact: "The Ongole breed, known as Nelore in Brazil, is the MOST NUMEROUS cattle breed in the world by population — with over 167 million animals in Brazil alone!",
     stats: [
-      { name: "Milk Production", val: 45, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 93, color: "#E8843A" },
-      { name: "Disease Resistance", val: 95, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 78, color: "#F5C842" },
+      { name: "Milk Production", val: 45, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 93, color: "#b45309" },
+      { name: "Disease Resistance", val: 95, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 78, color: "#1e293b" },
     ]
   },
   {
-    name: "Hariana", icon: "🐄", confidence: "88%", isIndian: true,
+    name: "Hariana", isIndian: true,
     origin: "Haryana & western Uttar Pradesh, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "8–12 litres/day",
@@ -369,16 +362,16 @@ const BREEDS = [
     region: "Haryana, western UP, Delhi, Rajasthan (India)",
     color: "White to greyish-white",
     description: "The Hariana is an elegant, medium-sized breed from the fertile plains of Haryana and western Uttar Pradesh. Graceful in appearance with a slender build, long face, and fine horns, Hariana cattle are prized for their clean white coat and calm, manageable temperament. They are excellent dairy producers under Indian village conditions and are also highly valued as draft animals for ploughing and transport. The breed forms the backbone of smallholder farming in the Gangetic plain.",
-    funfact: "Hariana bulls were so valued for agricultural work that they were once gifted between kings as precious diplomatic presents in ancient India! 👑🐄",
+    funfact: "Hariana bulls were so valued for agricultural work that they were once gifted between kings as precious diplomatic presents in ancient India!",
     stats: [
-      { name: "Milk Production", val: 62, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 88, color: "#E8843A" },
-      { name: "Disease Resistance", val: 82, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 93, color: "#F5C842" },
+      { name: "Milk Production", val: 62, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 88, color: "#b45309" },
+      { name: "Disease Resistance", val: 82, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 93, color: "#1e293b" },
     ]
   },
   {
-    name: "Rathi", icon: "🐄", confidence: "87%", isIndian: true,
+    name: "Rathi", isIndian: true,
     origin: "Bikaner & Ganganagar, Rajasthan, India",
     type: "Dairy Breed",
     milk: "10–15 litres/day",
@@ -387,16 +380,16 @@ const BREEDS = [
     region: "Rajasthan, particularly Bikaner division (India)",
     color: "Brown with white spots or patches",
     description: "The Rathi is Rajasthan's most important indigenous dairy breed, often called the 'Kamdhenu of the Desert' — a reference to the mythical wish-granting cow. It is a natural crossbreed of Sahiwal, Tharparkar, and Red Sindhi ancestries, developed over generations in the arid Bikaner region. Despite the harsh desert environment with scorching summers and minimal water, Rathi cows produce surprisingly high quantities of rich milk. The breed is gentle, compact, and highly economical to maintain.",
-    funfact: "Rathi cows are nicknamed 'Kamdhenu of the Desert' — meaning the wish-fulfilling divine cow — because they give so much milk despite living in one of the harshest deserts in the world! 🌟🐄",
+    funfact: "Rathi cows are nicknamed 'Kamdhenu of the Desert' — meaning the wish-fulfilling divine cow — because they give so much milk despite living in one of the harshest deserts in the world!",
     stats: [
-      { name: "Milk Production", val: 68, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 95, color: "#E8843A" },
-      { name: "Disease Resistance", val: 85, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 91, color: "#F5C842" },
+      { name: "Milk Production", val: 68, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 95, color: "#b45309" },
+      { name: "Disease Resistance", val: 85, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 91, color: "#1e293b" },
     ]
   },
   {
-    name: "Deoni", icon: "🐄", confidence: "86%", isIndian: true,
+    name: "Deoni", isIndian: true,
     origin: "Marathwada region, Maharashtra & Karnataka, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "7–9 litres/day",
@@ -405,16 +398,16 @@ const BREEDS = [
     region: "Latur, Osmanabad (Maharashtra); Bidar, Gulbarga (Karnataka)",
     color: "Black and white large irregular patches",
     description: "The Deoni (also called Dongarpati or Dongari) is a distinctive dual-purpose breed from the Deccan Plateau in Maharashtra and northern Karnataka. It is easily identified by its bold black-and-white patchy coat — similar in appearance to Holstein cattle but of entirely Indian origin. The Deoni is well-adapted to the semi-arid conditions of the Marathwada and Hyderabad-Karnataka regions, and is valued for both milk production and as a sturdy draft animal on black cotton soil farms.",
-    funfact: "The Deoni's bold black-and-white patches look so similar to European Holstein cows that people often mistake them — but Deoni is 100% Indian and has been around for thousands of years! 🇮🇳✨",
+    funfact: "The Deoni's bold black-and-white patches look so similar to European Holstein cows that people often mistake them — but Deoni is 100% Indian and has been around for thousands of years!",
     stats: [
-      { name: "Milk Production", val: 55, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 89, color: "#E8843A" },
-      { name: "Disease Resistance", val: 83, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 85, color: "#F5C842" },
+      { name: "Milk Production", val: 55, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 89, color: "#b45309" },
+      { name: "Disease Resistance", val: 83, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 85, color: "#1e293b" },
     ]
   },
   {
-    name: "Hallikar", icon: "🐂", confidence: "85%", isIndian: true,
+    name: "Hallikar", isIndian: true,
     origin: "Mysuru & Tumkur districts, Karnataka, India",
     type: "Draft Breed",
     milk: "3–5 litres/day",
@@ -423,16 +416,16 @@ const BREEDS = [
     region: "Karnataka, Tamil Nadu (India)",
     color: "Grey to dark grey, with dark neck and face",
     description: "The Hallikar is one of India's finest and most ancient draft breeds, originating in the Old Mysore region of Karnataka. Lean, athletic, and built for endurance, Hallikar bulls were historically used for night-marching — covering 50–60 km in a single night pulling carts through difficult terrain. The breed has a distinctive sharp face, tight skin, and compact muscular body. It is considered the ancestor of several other South Indian breeds and is protected under the National Bureau of Animal Genetic Resources.",
-    funfact: "Hallikar bulls were the ancient equivalent of sports cars — they could pull carts 50–60 km overnight without stopping, and were prized by the Mysore royal family for this incredible endurance! 🌙🏃",
+    funfact: "Hallikar bulls were the ancient equivalent of sports cars — they could pull carts 50–60 km overnight without stopping, and were prized by the Mysore royal family for this incredible endurance!",
     stats: [
-      { name: "Milk Production", val: 20, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 91, color: "#E8843A" },
-      { name: "Disease Resistance", val: 89, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 70, color: "#F5C842" },
+      { name: "Milk Production", val: 20, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 91, color: "#b45309" },
+      { name: "Disease Resistance", val: 89, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 70, color: "#1e293b" },
     ]
   },
   {
-    name: "Punganur", icon: "🐄", confidence: "87%", isIndian: true,
+    name: "Punganur", isIndian: true,
     origin: "Punganur, Chittoor district, Andhra Pradesh, India",
     type: "Dairy Breed",
     milk: "3–5 litres/day",
@@ -441,16 +434,16 @@ const BREEDS = [
     region: "Chittoor, Kadapa (Andhra Pradesh, India)",
     color: "White, light grey, or red-and-white",
     description: "The Punganur is one of the world's smallest cattle breeds and a living treasure of Andhra Pradesh. Standing just 70–90 cm tall and weighing as little as 80 kg, it looks almost like a toy cow — yet produces milk with an extraordinary fat content of 8%, the highest of any Indian breed! Despite their tiny size, Punganur cows are incredibly hardy, thriving on minimal feed and harsh conditions. The breed is critically endangered, with fewer than 3,000 purebred animals remaining.",
-    funfact: "The Punganur is one of the world's SMALLEST cattle breeds — a fully grown adult can stand under your dining table! Yet its milk has 8% fat — richer than cream from most other breeds! 🤏🥛",
+    funfact: "The Punganur is one of the world's SMALLEST cattle breeds — a fully grown adult can stand under your dining table! Yet its milk has 8% fat — richer than cream from most other breeds!",
     stats: [
-      { name: "Milk Production", val: 30, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 92, color: "#E8843A" },
-      { name: "Disease Resistance", val: 86, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 96, color: "#F5C842" },
+      { name: "Milk Production", val: 30, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 92, color: "#b45309" },
+      { name: "Disease Resistance", val: 86, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 96, color: "#1e293b" },
     ]
   },
   {
-    name: "Red Kandhari", icon: "🐄", confidence: "84%", isIndian: true,
+    name: "Red Kandhari", isIndian: true,
     origin: "Nanded & Latur, Maharashtra, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "6–8 litres/day",
@@ -459,16 +452,16 @@ const BREEDS = [
     region: "Marathwada region, Maharashtra (India)",
     color: "Deep red to brick-red",
     description: "The Red Kandhari is a compact and elegant dual-purpose breed from the Marathwada region of Maharashtra. It is named after the Kandhar area in Nanded district. Recognised by its attractive deep red or brick-red coat, short body, and small curved horns, this breed is well-suited to dryland farming on the black cotton soils of the Deccan. Though not a heavy milk producer, it is extraordinarily efficient — yielding good quantities of fat-rich milk on minimal grazing and fodder.",
-    funfact: "Red Kandhari cattle are so efficient that farmers say they give more milk than their small bodies seem capable of — earning the local nickname 'the small wonder of Marathwada'! ❤️🐄",
+    funfact: "Red Kandhari cattle are so efficient that farmers say they give more milk than their small bodies seem capable of — earning the local nickname 'the small wonder of Marathwada'!",
     stats: [
-      { name: "Milk Production", val: 48, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 90, color: "#E8843A" },
-      { name: "Disease Resistance", val: 84, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 88, color: "#F5C842" },
+      { name: "Milk Production", val: 48, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 90, color: "#b45309" },
+      { name: "Disease Resistance", val: 84, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 88, color: "#1e293b" },
     ]
   },
   {
-    name: "Nimari", icon: "🐂", confidence: "83%", isIndian: true,
+    name: "Nimari", isIndian: true,
     origin: "Nimar region, Madhya Pradesh, India",
     type: "Dual Purpose (Milk & Draft)",
     milk: "6–9 litres/day",
@@ -477,17 +470,17 @@ const BREEDS = [
     region: "Nimar, Khargone, Barwani (Madhya Pradesh, India)",
     color: "Red-brown with white patches",
     description: "The Nimari is a robust and handsome dual-purpose breed from the Nimar plain along the Narmada River in Madhya Pradesh. It is believed to have evolved from crosses between Gir and Khilari cattle, combining the milk richness of Gir with the draft strength of Khilari. The breed has a well-muscled body, medium frame, and characteristic red-brown coat with white patches. It is highly regarded by farmers in the Narmada valley for its adaptability, strength, and moderate milk yield.",
-    funfact: "Nimari cattle live along the banks of the sacred Narmada River, and local farmers believe the river's holy water keeps their herd healthier and stronger than any other breed! 🌊🙏",
+    funfact: "Nimari cattle live along the banks of the sacred Narmada River, and local farmers believe the river's holy water keeps their herd healthier and stronger than any other breed!",
     stats: [
-      { name: "Milk Production", val: 50, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 87, color: "#E8843A" },
-      { name: "Disease Resistance", val: 81, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 84, color: "#F5C842" },
+      { name: "Milk Production", val: 50, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 87, color: "#b45309" },
+      { name: "Disease Resistance", val: 81, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 84, color: "#1e293b" },
     ]
   },
   // ===== INTERNATIONAL BREEDS =====
   {
-    name: "Holstein-Friesian", icon: "🐮", confidence: "97%", isIndian: false,
+    name: "Holstein-Friesian", isIndian: false,
     origin: "Netherlands (North Holland & Friesland)",
     type: "Dairy Breed",
     milk: "25–35 litres/day",
@@ -496,16 +489,16 @@ const BREEDS = [
     region: "Worldwide — USA, Europe, India, Australia",
     color: "Black & White patches",
     description: "The Holstein-Friesian is the world's highest milk-producing cattle breed. Originating from the Netherlands, it is now found on dairy farms across every continent. Recognisable by its distinctive black-and-white coat pattern (sometimes red-and-white), the Holstein is the backbone of modern commercial dairy farming. Each cow's spot pattern is completely unique, like a fingerprint!",
-    funfact: "A single Holstein cow holds the world record for milk — over 30,000 kg in one year! That's enough to fill a small swimming pool. 🥛🏊",
+    funfact: "A single Holstein cow holds the world record for milk — over 30,000 kg in one year! That's enough to fill a small swimming pool.",
     stats: [
-      { name: "Milk Production", val: 98, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 40, color: "#E8843A" },
-      { name: "Disease Resistance", val: 62, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 78, color: "#F5C842" },
+      { name: "Milk Production", val: 98, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 40, color: "#b45309" },
+      { name: "Disease Resistance", val: 62, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 78, color: "#1e293b" },
     ]
   },
   {
-    name: "Jersey", icon: "🐄", confidence: "95%", isIndian: false,
+    name: "Jersey", isIndian: false,
     origin: "Jersey Island, English Channel",
     type: "Dairy Breed",
     milk: "15–20 litres/day",
@@ -514,16 +507,16 @@ const BREEDS = [
     region: "USA, UK, Australia, New Zealand, India",
     color: "Light brown to fawn, sometimes darker",
     description: "The Jersey is the second most popular dairy breed in the world. Despite being small in size, Jersey cows produce milk with the highest butterfat content (4.5–5.5%) of any breed — making their milk golden-hued and incredibly rich. They are gentle, curious, and remarkably efficient feed converters. Jersey cattle adapt well to hot climates, making them popular in tropical countries including India.",
-    funfact: "Jersey cows have the largest eyes relative to body size of any cattle breed — giving them their characteristic gentle, 'doe-eyed' look! 👀🐄",
+    funfact: "Jersey cows have the largest eyes relative to body size of any cattle breed — giving them their characteristic gentle, doe-eyed look!",
     stats: [
-      { name: "Milk Production", val: 72, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 68, color: "#E8843A" },
-      { name: "Disease Resistance", val: 70, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 92, color: "#F5C842" },
+      { name: "Milk Production", val: 72, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 68, color: "#b45309" },
+      { name: "Disease Resistance", val: 70, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 92, color: "#1e293b" },
     ]
   },
   {
-    name: "Angus", icon: "🐃", confidence: "93%", isIndian: false,
+    name: "Angus", isIndian: false,
     origin: "Aberdeenshire & Angus, Scotland",
     type: "Beef Breed",
     milk: "5–8 litres/day",
@@ -532,16 +525,16 @@ const BREEDS = [
     region: "USA, UK, Australia, New Zealand, South America",
     color: "Solid black (or red in Red Angus)",
     description: "Aberdeen Angus is the world's most popular beef breed, renowned for producing exceptionally well-marbled, tender meat. Polled (hornless) naturally, Angus cattle are easy to handle and adaptable to a wide range of climates. First developed in northeastern Scotland, they were exported to the USA in the 1870s and have since dominated beef markets globally. 'Certified Angus Beef' is a premium brand recognized worldwide.",
-    funfact: "Angus cattle are naturally hornless (polled) — a rare genetic trait! This makes them much safer and easier to handle without any dehorning. 🎉",
+    funfact: "Angus cattle are naturally hornless (polled) — a rare genetic trait! This makes them much safer and easier to handle without any dehorning.",
     stats: [
-      { name: "Milk Production", val: 30, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 60, color: "#E8843A" },
-      { name: "Disease Resistance", val: 78, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 85, color: "#F5C842" },
+      { name: "Milk Production", val: 30, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 60, color: "#b45309" },
+      { name: "Disease Resistance", val: 78, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 85, color: "#1e293b" },
     ]
   },
   {
-    name: "Brahman", icon: "🐂", confidence: "92%", isIndian: false,
+    name: "Brahman", isIndian: false,
     origin: "USA (developed from Indian Zebu breeds)",
     type: "Beef Breed",
     milk: "4–7 litres/day",
@@ -550,16 +543,16 @@ const BREEDS = [
     region: "USA, Brazil, Australia, South Africa, Southeast Asia",
     color: "Light grey to dark grey; sometimes reddish",
     description: "The Brahman was developed in the United States in the early 20th century by crossbreeding several Indian Zebu breeds — primarily Gir, Kankrej, and Ongole. Easily recognised by its large hump over the shoulders, drooping ears, and loose skin under the neck (dewlap), the Brahman is the most popular beef breed in the American South. It is extraordinarily resilient, thriving in extreme heat, humidity, and even drought conditions.",
-    funfact: "The Brahman's large hump is made of muscle, not fat! It stores energy and helps the animal survive long periods without food — like a camel's hump but made of muscle! 💪🐄",
+    funfact: "The Brahman's large hump is made of muscle, not fat! It stores energy and helps the animal survive long periods without food — like a camel's hump but made of muscle!",
     stats: [
-      { name: "Milk Production", val: 25, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 97, color: "#E8843A" },
-      { name: "Disease Resistance", val: 93, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 60, color: "#F5C842" },
+      { name: "Milk Production", val: 25, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 97, color: "#b45309" },
+      { name: "Disease Resistance", val: 93, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 60, color: "#1e293b" },
     ]
   },
   {
-    name: "Simmental", icon: "🐄", confidence: "91%", isIndian: false,
+    name: "Simmental", isIndian: false,
     origin: "Simme Valley, Bern, Switzerland",
     type: "Dual Purpose (Milk & Beef)",
     milk: "18–25 litres/day",
@@ -568,16 +561,16 @@ const BREEDS = [
     region: "Europe, USA, Canada, South Africa, Australia, Brazil",
     color: "Yellow-red to dark red, with white patches",
     description: "The Simmental is one of the oldest and most widely distributed cattle breeds in the world, originating in the scenic Simme Valley of Switzerland. It is a true dual-purpose breed — large enough to provide excellent beef yields while also being a high-volume milk producer. Simmental cattle have been used extensively in crossbreeding programmes worldwide to improve both meat and dairy traits in local breeds.",
-    funfact: "Simmental is one of the TOP 5 most numerous cattle breeds in the entire world — with over 40 million registered animals across more than 100 countries! 🌍🏆",
+    funfact: "Simmental is one of the TOP 5 most numerous cattle breeds in the entire world — with over 40 million registered animals across more than 100 countries!",
     stats: [
-      { name: "Milk Production", val: 80, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 62, color: "#E8843A" },
-      { name: "Disease Resistance", val: 74, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 85, color: "#F5C842" },
+      { name: "Milk Production", val: 80, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 62, color: "#b45309" },
+      { name: "Disease Resistance", val: 74, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 85, color: "#1e293b" },
     ]
   },
   {
-    name: "Limousin", icon: "🐃", confidence: "88%", isIndian: false,
+    name: "Limousin", isIndian: false,
     origin: "Limousin & Marche regions, France",
     type: "Beef Breed",
     milk: "5–8 litres/day",
@@ -586,16 +579,16 @@ const BREEDS = [
     region: "France, UK, USA, Australia, New Zealand, South America",
     color: "Golden-red to wheat-yellow",
     description: "The Limousin is one of Europe's oldest and most distinguished beef breeds, originating in the rugged highlands of central France. Its striking golden-red coat and muscular, well-rounded body are immediately recognisable. Limousin cattle produce some of the leanest beef of any European breed, with excellent muscle-to-bone ratios — a quality highly prized by chefs and butchers worldwide.",
-    funfact: "Limousin cattle appear in cave paintings in the Lascaux Caves of France — making them one of the oldest documented cattle breeds in human history, depicted over 17,000 years ago! 🎨🦣",
+    funfact: "Limousin cattle appear in cave paintings in the Lascaux Caves of France — making them one of the oldest documented cattle breeds in human history, depicted over 17,000 years ago!",
     stats: [
-      { name: "Milk Production", val: 28, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 55, color: "#E8843A" },
-      { name: "Disease Resistance", val: 75, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 65, color: "#F5C842" },
+      { name: "Milk Production", val: 28, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 55, color: "#b45309" },
+      { name: "Disease Resistance", val: 75, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 65, color: "#1e293b" },
     ]
   },
   {
-    name: "Red Sindhi", icon: "🐄", confidence: "90%", isIndian: false,
+    name: "Red Sindhi", isIndian: false,
     origin: "Sindh region, Pakistan",
     type: "Dairy Breed",
     milk: "8–12 litres/day",
@@ -604,12 +597,12 @@ const BREEDS = [
     region: "Pakistan, India (Kerala, Tamil Nadu, Odisha), Sri Lanka, Brazil",
     color: "Deep red to reddish-brown",
     description: "The Red Sindhi is a compact, hardy dairy breed from the Sindh province of Pakistan. It is one of the most heat-tolerant cattle breeds in the world, making it invaluable in scorching tropical and arid regions. Though relatively small in size, it produces milk with a fat content of 4.5–5%, which is exceptionally rich. Red Sindhi cows are known for their calm temperament and have been widely crossbred globally to improve local breeds.",
-    funfact: "Red Sindhi cows thrive in both the dry deserts of Pakistan AND the humid tropics of Kerala and Sri Lanka — a truly remarkable feat of natural hardiness! 🌵🌴",
+    funfact: "Red Sindhi cows thrive in both the dry deserts of Pakistan AND the humid tropics of Kerala and Sri Lanka — a truly remarkable feat of natural hardiness!",
     stats: [
-      { name: "Milk Production", val: 58, color: "#4A7C59" },
-      { name: "Heat Tolerance", val: 96, color: "#E8843A" },
-      { name: "Disease Resistance", val: 92, color: "#87CEEB" },
-      { name: "Temperament (Calm)", val: 90, color: "#F5C842" },
+      { name: "Milk Production", val: 58, color: "#0f766e" },
+      { name: "Heat Tolerance", val: 96, color: "#b45309" },
+      { name: "Disease Resistance", val: 92, color: "#0284c7" },
+      { name: "Temperament (Calm)", val: 90, color: "#1e293b" },
     ]
   }
 ];
@@ -619,17 +612,16 @@ let activeFilter = 'all';
 // ---- State ----
 let uploadedCount = 0;
 const uploadedFiles = { front: false, back: false, left: false, right: false };
-
 let cocoModel = null;
 
 async function loadAI() {
   try {
-    document.getElementById("analyse-btn").innerHTML = "🧠 Loading AI...";
+    document.getElementById("analyse-btn").innerHTML = "Loading AI models...";
     cocoModel = await cocoSsd.load();
-    document.getElementById("analyse-btn").innerHTML = "🔍 Validate Images";
+    document.getElementById("analyse-btn").innerHTML = "Validate Images";
   } catch (err) {
     console.error("Failed to load CoCo-SSD:", err);
-    document.getElementById("analyse-btn").innerHTML = "❌ AI Load Failed";
+    document.getElementById("analyse-btn").innerHTML = "AI Load Failed";
   }
 }
 
@@ -646,158 +638,131 @@ function renderBreedPanel(f) {
   const pool = f === 'indian' ? BREEDS.filter(b => b.isIndian) : BREEDS;
   const isIndianOnly = f === 'indian';
   document.getElementById('panel-title').textContent = isIndianOnly
-    ? '🇮🇳 Indian Breeds in Database'
-    : '🌍 All Breeds in Database';
+    ? 'Indian Breeds in Database'
+    : 'All Database Breeds';
   document.getElementById('panel-count').textContent = pool.length + ' breeds';
   const chips = document.getElementById('breed-chips');
+  
   chips.innerHTML = pool.map(b => {
-    const indFlag = b.isIndian ? '🇮🇳 ' : '';
-    const bg     = b.isIndian ? '#FFF3E0' : '#F0F4FF';
-    const border = b.isIndian ? '#FFB74D' : '#90A8D4';
-    const color  = b.isIndian ? '#7B3F00' : '#1A3560';
-    return '<span style="display:inline-flex;align-items:center;gap:5px;background:'+bg+';border:1.5px solid '+border+';color:'+color+';font-family:Nunito,sans-serif;font-weight:700;font-size:0.82rem;padding:5px 12px;border-radius:50px;white-space:nowrap;">'+ b.icon +' '+ indFlag + b.name +'</span>';
+    const indFlag = b.isIndian ? '<span style="font-size:0.65rem;margin-left:4px;color:#c2410c;">🇮🇳</span>' : '';
+    return `<span class="breed-chip">${b.name}${indFlag}</span>`;
   }).join('');
 }
 
+// Initial render
+renderBreedPanel('all');
+
 function triggerUpload(id) {
-    document.getElementById(id).click();
+  document.getElementById(id).click();
 }
 
 function handleUpload(input, cardId, prevId) {
+  const file = input.files[0];
+  if (!file) return;
 
-    const file = input.files[0];
+  // Only allow images
+  const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+  if (!allowedTypes.includes(file.type)) {
+    alert("Please upload only JPG, PNG, or WEBP images.");
+    input.value = "";
+    return;
+  }
 
-    if (!file) return;
+  // File size check (10MB)
+  const maxSize = 10 * 1024 * 1024;
+  if (file.size > maxSize) {
+    alert("Image file size must be smaller than 10 MB.");
+    input.value = "";
+    return;
+  }
 
-    // Only allow images
-    const allowedTypes = [
-        "image/jpeg",
-        "image/jpg",
-        "image/png",
-        "image/webp"
-    ];
-
-    if (!allowedTypes.includes(file.type)) {
-        alert("❌ Please upload only JPG, PNG or WEBP images.");
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = async function() {
+      // Resolution Check
+      if (img.width < 800 || img.height < 600) {
+        alert("Image resolution is too low.\nMinimum required: 800 × 600 pixels.");
         input.value = "";
         return;
-    }
+      }
 
-    // File size check
-    const maxSize = 10 * 1024 * 1024; //10 MB
+      const animals = await detectAnimal(img);
+      const detected = animals.find(a => a.score > 0.60);
 
-    if (file.size > maxSize) {
-        alert("❌ Image must be smaller than 10 MB.");
+      if (!detected) {
+        alert("Cattle not detected. Please ensure a cow, bull, or buffalo is clearly visible and the image is sharp.");
         input.value = "";
         return;
-    }
+      }
 
-    const reader = new FileReader();
+      const card = document.getElementById(cardId);
+      const prev = document.getElementById(prevId);
+      prev.src = e.target.result;
+      card.classList.add("uploaded");
 
-    reader.onload = function(e){
+      // Check if badge already exists, remove it first
+      const existingBadge = card.querySelector(".ai-badge");
+      if (existingBadge) {
+        existingBadge.remove();
+      }
 
-        const img = new Image();
+      const badge = document.createElement("div");
+      badge.className = "ai-badge";
+      badge.innerHTML = "Cattle Detected";
+      card.appendChild(badge);
 
-        img.onload = async function(){
+      const key = cardId.replace("card-", "");
+      if (!uploadedFiles[key]) {
+        uploadedFiles[key] = true;
+        uploadedCount++;
+      }
 
-            // Resolution Check
-            if(img.width < 800 || img.height < 600){
-
-                alert("❌ Image resolution is too low.\nMinimum: 800 × 600");
-
-                input.value="";
-
-                return;
-            }
-
-            const animals = await detectAnimal(img);
-
-            const detected = animals.find(a => a.score > 0.60);
-
-            if(!detected){
-
-                alert("❌ Cow, bull, or buffalo not detected. Please upload a clear photo of the animal.");
-
-                return;
-
-            }
-            const card = document.getElementById(cardId);
-
-            const prev = document.getElementById(prevId);
-
-            prev.src = e.target.result;
-
-            card.classList.add("uploaded");
-
-            const badge = document.createElement("div");
-            badge.className = "ai-badge";
-            badge.innerHTML = "🤖 Cattle/Buffalo Detected";
-            card.appendChild(badge);
-
-            const key = cardId.replace("card-","");
-
-            if(!uploadedFiles[key]){
-
-                uploadedFiles[key]=true;
-
-                uploadedCount++;
-
-            }
-
-            updateAnalyseBtn();
-
-        };
-
-        img.onerror=function(){
-
-            alert("❌ Invalid or corrupted image.");
-
-            input.value="";
-
-        };
-
-        img.src=e.target.result;
-
+      updateAnalyseBtn();
     };
 
-    reader.readAsDataURL(file);
+    img.onerror = function() {
+      alert("Invalid or corrupted image file.");
+      input.value = "";
+    };
+    img.src = e.target.result;
+  };
 
+  reader.readAsDataURL(file);
 }
 
-async function detectAnimal(image){
-    if (!cocoModel) return [];
-    try {
-        const predictions = await cocoModel.detect(image);
-        const allowed = ['cow', 'sheep', 'horse', 'elephant'];
-        const animals = predictions.filter(p =>
-            allowed.includes(p.class)
-        );
-        return animals;
-    } catch (e) {
-        console.error("CoCo-SSD detection error:", e);
-        return [];
-    }
+async function detectAnimal(image) {
+  if (!cocoModel) return [];
+  try {
+    const predictions = await cocoModel.detect(image);
+    const allowed = ['cow', 'sheep', 'horse', 'elephant'];
+    const animals = predictions.filter(p => allowed.includes(p.class));
+    return animals;
+  } catch (e) {
+    console.error("CoCo-SSD detection error:", e);
+    return [];
+  }
 }
 
 function updateAnalyseBtn() {
   const btn = document.getElementById('analyse-btn');
   btn.disabled = uploadedCount < 4;
   if (uploadedCount > 0 && uploadedCount < 4) {
-    btn.textContent = `📸 ${4 - uploadedCount} more photo${4-uploadedCount>1?'s':''} needed`;
+    btn.textContent = `${4 - uploadedCount} more photo${4 - uploadedCount > 1 ? 's' : ''} required`;
   } else if (uploadedCount === 4) {
-    btn.textContent = '🔬 Identify This Breed!';
+    btn.textContent = 'Identify Breed';
   }
 }
 
 function setStep(n) {
   for (let i = 1; i <= 3; i++) {
-    const el = document.getElementById('s'+i);
-    el.classList.remove('active','done');
+    const el = document.getElementById('s' + i);
+    el.classList.remove('active', 'done');
     if (i < n) el.classList.add('done');
     else if (i === n) el.classList.add('active');
   }
   for (let i = 1; i <= 2; i++) {
-    const el = document.getElementById('line'+i);
+    const el = document.getElementById('line' + i);
     el.classList.toggle('done', i < n);
   }
 }
@@ -807,7 +772,7 @@ async function startAnalysis() {
   document.getElementById('upload-section').style.display = 'none';
   document.getElementById('loading-section').style.display = 'block';
   setStep(2);
-  document.getElementById('loading-section').scrollIntoView({behavior:'smooth'});
+  document.getElementById('loading-section').scrollIntoView({behavior: 'smooth'});
 
   try {
     const frontSrc = document.getElementById('prev-front').src;
@@ -831,11 +796,10 @@ async function startAnalysis() {
       throw new Error(result.error || "Failed to identify breed.");
     }
 
-    // Find the breed in our BREEDS database
+    // Find the breed in our local BREEDS database
     const matchedBreed = BREEDS.find(b => b.name.toLowerCase() === result.breedName.toLowerCase());
     
     if (matchedBreed) {
-      // Temporarily override the confidence with the AI-calculated confidence from the backend
       matchedBreed.confidence = result.confidence;
       showResult(matchedBreed);
     } else {
@@ -850,7 +814,7 @@ async function startAnalysis() {
     document.getElementById('loading-section').style.display = 'none';
     document.getElementById('upload-section').style.display = 'block';
     setStep(1);
-    document.getElementById('upload-section').scrollIntoView({behavior:'smooth'});
+    document.getElementById('upload-section').scrollIntoView({behavior: 'smooth'});
   }
 }
 
@@ -859,9 +823,9 @@ function showResult(breed) {
   document.getElementById('result-section').style.display = 'block';
   setStep(3);
 
-  document.getElementById('res-icon').textContent = breed.icon;
   document.getElementById('res-name').textContent = breed.name;
-  document.getElementById('res-confidence').textContent = `🎯 AI Confidence: ${breed.confidence}`;
+  document.getElementById('res-confidence').textContent = `AI Confidence: ${breed.confidence}`;
+  
   const indianBadge = document.getElementById('res-indian-badge');
   if (breed.isIndian) {
     indianBadge.style.display = 'inline-block';
@@ -872,28 +836,27 @@ function showResult(breed) {
   document.getElementById('res-funfact').textContent = breed.funfact;
 
   const infoData = [
-    { icon: '🌍', label: 'Origin', value: breed.origin },
-    { icon: '🏷️', label: 'Breed Type', value: breed.type },
-    { icon: '🥛', label: 'Milk Production', value: breed.milk, sub: 'per day on average' },
-    { icon: '❤️', label: 'Lifespan', value: breed.lifespan },
-    { icon: '⚖️', label: 'Average Weight', value: breed.weight },
-    { icon: '📍', label: 'Mainly Found In', value: breed.region },
+    { label: 'Origin', value: breed.origin },
+    { label: 'Breed Type', value: breed.type },
+    { label: 'Milk Production', value: breed.milk, sub: 'per day on average' },
+    { label: 'Lifespan', value: breed.lifespan },
+    { label: 'Average Weight', value: breed.weight },
+    { label: 'Mainly Found In', value: breed.region },
   ];
 
   const grid = document.getElementById('info-grid');
   grid.innerHTML = infoData.map(d => `
     <div class="info-card">
-      <div class="info-card-icon">${d.icon}</div>
-      <div class="info-card-label">${d.label}</div>
-      <div class="info-card-value">${d.value}</div>
-      ${d.sub ? `<div class="info-card-sub">${d.sub}</div>` : ''}
+      <div class="info-label">${d.label}</div>
+      <div class="info-value">${d.value}</div>
+      ${d.sub ? `<div class="info-sub">${d.sub}</div>` : ''}
     </div>
   `).join('');
 
   const bars = document.getElementById('stat-bars');
   bars.innerHTML = breed.stats.map(s => `
     <div class="stat-row">
-      <div class="stat-name"><span>${s.name}</span><span>${s.val}%</span></div>
+      <div class="stat-name-group"><span>${s.name}</span><span>${s.val}%</span></div>
       <div class="stat-bar"><div class="stat-fill" style="width:0%;background:${s.color}" data-val="${s.val}"></div></div>
     </div>
   `).join('');
@@ -914,13 +877,18 @@ function resetApp() {
     document.getElementById('card-'+k).classList.remove('uploaded');
     document.getElementById('prev-'+k).src = '';
     document.getElementById('input-'+k).value = '';
+    
+    const existingBadge = document.getElementById('card-'+k).querySelector(".ai-badge");
+    if (existingBadge) {
+      existingBadge.remove();
+    }
   });
   document.getElementById('result-section').style.display = 'none';
   document.getElementById('upload-section').style.display = 'block';
   document.getElementById('analyse-btn').disabled = true;
-  document.getElementById('analyse-btn').textContent = '🔬 Identify This Breed!';
+  document.getElementById('analyse-btn').textContent = 'Identify Breed';
   setStep(1);
-  document.getElementById('upload-section').scrollIntoView({behavior:'smooth'});
+  document.getElementById('upload-section').scrollIntoView({behavior: 'smooth'});
 }
 </script>
 </body>
