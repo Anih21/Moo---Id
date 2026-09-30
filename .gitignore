@@ -1,0 +1,23 @@
+# ─── API Keys & Secrets ───────────────────────
+backend/.env
+.env
+.env.*
+*.env
+
+# ─── Node modules ────────────────────────────
+node_modules/
+backend/node_modules/
+
+# ─── Generated / build files ─────────────────
+backend/reference_images/
+
+# ─── OS junk ─────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editor folders ──────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
