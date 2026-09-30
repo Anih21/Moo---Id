@@ -1,8 +1,12 @@
 # ─── API Keys & Secrets ───────────────────────
+# Block real .env files
 backend/.env
 .env
-.env.*
-*.env
+
+# Block any .env.local / .env.production etc. but NOT .env.example
+.env.local
+.env.production
+.env.development
 
 # ─── Node modules ────────────────────────────
 node_modules/
